@@ -1,71 +1,85 @@
 import React from "react";
 import styled from "styled-components";
-import types from "../constants/triangle-types";
+import { bordersToSides, sidesToBorders } from "../lib/triangle-utils";
+
+const MAX_WIDTH = 700;
+const MAX_HEIGHT = 400;
+const TITLE_HEIGHT = 80;
+const SIDE_SCALE = 100;
 
 const TriangleContainer = styled.div`
   background: #fff;
   border: 1px solid #ddd;
-  width: 300px;
-  height: 300px;
+  width: ${MAX_WIDTH}px;
+  height: ${MAX_HEIGHT}px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  position: relative;
 `;
 
-/**
- * Equilateral Triangle
- * - all 3 sides of equal length
- */
-const Equilateral = styled.span`
-  width: 0;
-  height: 0;
-  border-right: 80px solid transparent;
-  border-bottom: 130px solid #444;
-  border-left: 80px solid transparent;
+const Title = styled.h2`
+  height: ${TITLE_HEIGHT};
+  font-weight: 200;
 `;
 
-/**
- * Isosceles Triangle
- * - exactly 2 sides of equal lenght
- */
-const Isosceles = styled.span`
-  width: 0;
-  height: 0;
-  border-right: 80px solid transparent;
-  border-bottom: 80px solid #000;
-  border-left: 80px solid transparent;
-`;
+const Label = side => {
+  return (
+    <div>
+      <span>{side.name}</span>
+    </div>
+  );
+};
 
-/**
- * Scalene Triangle
- * - no sides of equal length
- */
-const Scalene = styled.span`
+const NoTriangle = styled.div``;
+
+// TODO: fix scale values
+const Triangle = styled.span`
   width: 0;
   height: 0;
-  border-right: 40px solid transparent;
-  border-bottom: 100px solid #888;
-  border-left: 150px solid transparent;
+  ${props => `
+    border-left: ${Math.min(
+      props.left * SIDE_SCALE,
+      MAX_WIDTH / 2
+    )}px solid transparent;
+    border-bottom: ${Math.min(
+      props.height * SIDE_SCALE,
+      MAX_HEIGHT - TITLE_HEIGHT
+    )}px solid #000;
+    border-right: ${Math.min(
+      props.right * SIDE_SCALE,
+      MAX_WIDTH / 2
+    )}px solid transparent;
+  `};
 `;
 
 export default class extends React.PureComponent {
-  renderTriangle = type => {
-    switch (type) {
-      case types.EQUILATERAL:
-        return <Equilateral />;
-      case types.ISOSCELES:
-        return <Isosceles />;
-      case types.SCALENE:
-        return <Scalene />;
-      default:
-        return null;
+  renderTriangle = () => {
+    const { type, sides, borders } = this.props;
+    // only display if all sides has a length > 0
+    const valid = Object.values(sides).filter(side => side <= 0).length === 0;
+    // const borders = sidesToBorders(...sides);
+    // console.log(borders);
+    // console.log(bordersToSides(...Object.values(sides)));
+
+    if (valid) {
+      // const labels = Object.entries(sides).map(side => (
+      //   <Label key={side[0]} name={side[0]} value={side[1]} />
+      // ));
+      return [
+        // labels,
+        // <Title key={`title_${type}`}>{type}</Title>,
+        <Triangle {...borders} key={`triangle_${type}`} />
+      ];
     }
+    return (
+      <NoTriangle>
+        <h5>Try to change the values below...</h5>
+      </NoTriangle>
+    );
   };
   render() {
-    return (
-      <TriangleContainer>
-        {this.renderTriangle(this.props.type)}
-      </TriangleContainer>
-    );
+    return <TriangleContainer>{this.renderTriangle()}</TriangleContainer>;
   }
 }

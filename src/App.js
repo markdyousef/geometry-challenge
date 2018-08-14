@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import styled, { injectGlobal } from "styled-components";
 import Triangle from "./components/Triangle";
 import Controls from "./components/Controls";
-import { compareSides } from "./lib/triangle-utils";
+import {
+  compareSides,
+  bordersToSides,
+  sidesToBorders
+} from "./lib/triangle-utils";
 
 injectGlobal`
   body {
@@ -21,16 +25,24 @@ const Container = styled.section`
 class App extends Component {
   state = {
     sides: {
-      a: 0,
-      b: 0,
-      c: 0
+      a: 1,
+      b: 1,
+      c: 1
     },
-    type: null
+    type: null,
+    borders: {}
   };
+  componentDidMount() {
+    const { sides } = this.state;
+    const borders = sidesToBorders(...Object.values(sides));
+    this.changeType(sides);
+    this.setState({ borders });
+  }
   changeSide = side => {
     const newSides = { ...this.state.sides, ...side };
+    const borders = sidesToBorders(...Object.values(newSides));
     this.changeType(newSides);
-    this.setState({ sides: newSides });
+    this.setState({ sides: newSides, borders });
   };
   changeType = sides => {
     const type = compareSides(...Object.values(sides));
