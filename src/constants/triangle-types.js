@@ -1,0 +1,5 @@
+export default {
+  EQUILATERAL: "EQUILATERAL",
+  ISOSCELES: "ISOSCELES",
+  SCALENE: "SCALENE"
+};

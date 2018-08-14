@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled, { injectGlobal } from "styled-components";
 import Triangle from "./components/Triangle";
 import Controls from "./components/Controls";
+import { compareSides } from "./lib/triangle-utils";
 
 injectGlobal`
   body {
@@ -28,13 +29,18 @@ class App extends Component {
   };
   changeSide = side => {
     const newSides = { ...this.state.sides, ...side };
+    this.changeType(newSides);
     this.setState({ sides: newSides });
+  };
+  changeType = sides => {
+    const type = compareSides(...Object.values(sides));
+    this.setState({ type });
   };
   render() {
     return (
       <Container>
-        <Triangle type="scalene" />
-        <Controls {...this.state} changeSide={this.changeSide} />
+        <Triangle {...this.state} />
+        <Controls sides={this.state.sides} changeSide={this.changeSide} />
       </Container>
     );
   }

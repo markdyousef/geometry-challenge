@@ -1,3 +1,5 @@
+import types from "../constants/triangle-types";
+
 const validate = (a, b, c) => {
   const sides = [a, b, c];
   // TODO: check if 3 arguments are provided
@@ -12,18 +14,18 @@ const validate = (a, b, c) => {
   }
 };
 
-exports.compareSides = (a = 1, b = 2, c = 3) => {
+export const compareSides = (a = 1, b = 2, c = 3) => {
   validate(a, b, c);
   // all sides are equal length - equilateral triangle
   if (a === b && a === c) {
-    return 3;
+    return types.EQUILATERAL;
   }
 
   // no sides are equal - scalene triangle
   if (a !== b && b !== c && a !== c) {
-    return 0;
+    return types.SCALENE;
   }
 
   // otherwise two sides must be equal - isocale triangle
-  return 2;
+  return types.ISOSCELES;
 };

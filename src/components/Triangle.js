@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import types from "../constants/triangle-types";
 
 const TriangleContainer = styled.div`
   background: #fff;
@@ -50,11 +51,11 @@ const Scalene = styled.span`
 export default class extends React.PureComponent {
   renderTriangle = type => {
     switch (type) {
-      case "equilateral":
+      case types.EQUILATERAL:
         return <Equilateral />;
-      case "isosceles":
+      case types.ISOSCELES:
         return <Isosceles />;
-      case "scalene":
+      case types.SCALENE:
         return <Scalene />;
       default:
         return null;

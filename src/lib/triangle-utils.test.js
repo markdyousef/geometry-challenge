@@ -1,20 +1,24 @@
-const { compareSides } = require("./triangle-utils");
+import { compareSides } from "./triangle-utils";
+import types from "../constants/triangle-types";
 
 describe("When given 3 positive numbers", () => {
   it("should return 3 equal sides", () => {
-    expect(compareSides(4, 4, 4)).toBe(3);
-    expect(compareSides(1000, 1000, 1000)).toBe(3);
-    expect(compareSides(1.555, 1.555, 1.555)).toBe(3);
+    const type = types.EQUILATERAL;
+    expect(compareSides(4, 4, 4)).toBe(type);
+    expect(compareSides(1000, 1000, 1000)).toBe(type);
+    expect(compareSides(1.555, 1.555, 1.555)).toBe(type);
   });
   it("should return 2 equal sides", () => {
-    expect(compareSides(4, 4, 3)).toBe(2);
-    expect(compareSides(1000, 2000, 1000)).toBe(2);
-    expect(compareSides(0.00005, 0.00001, 0.00005)).toBe(2);
+    const type = types.ISOSCELES;
+    expect(compareSides(4, 4, 3)).toBe(type);
+    expect(compareSides(1000, 2000, 1000)).toBe(type);
+    expect(compareSides(0.00005, 0.00001, 0.00005)).toBe(type);
   });
   it("should return 0 equal sides", () => {
-    expect(compareSides(1, 2, 3)).toBe(0);
-    expect(compareSides(1000, 2000, 3000)).toBe(0);
-    expect(compareSides(1.9999, 2.8888, 3)).toBe(0);
+    const type = types.SCALENE;
+    expect(compareSides(1, 2, 3)).toBe(type);
+    expect(compareSides(1000, 2000, 3000)).toBe(type);
+    expect(compareSides(1.9999, 2.8888, 3)).toBe(type);
   });
 });
 
