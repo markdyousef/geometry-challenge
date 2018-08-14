@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled, { injectGlobal } from "styled-components";
 import Triangle from "./components/Triangle";
-import Input from "./components/Input";
+import Controls from "./components/Controls";
 
 injectGlobal`
   body {
@@ -17,31 +17,24 @@ const Container = styled.section`
   align-items: center;
 `;
 
-const ControlsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 340px;
-  background: #fff;
-  padding: 40px 30px;
-  margin: 20px;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  :hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  }
-`;
-
 class App extends Component {
+  state = {
+    sides: {
+      a: 0,
+      b: 0,
+      c: 0
+    },
+    type: null
+  };
+  changeSide = side => {
+    const newSides = { ...this.state.sides, ...side };
+    this.setState({ sides: newSides });
+  };
   render() {
     return (
       <Container>
         <Triangle type="scalene" />
-        <ControlsContainer>
-          <Input id="a" />
-          <Input id="b" />
-          <Input id="c" />
-        </ControlsContainer>
+        <Controls {...this.state} changeSide={this.changeSide} />
       </Container>
     );
   }

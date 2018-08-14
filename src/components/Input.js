@@ -18,23 +18,15 @@ const Input = styled.input`
   text-align: center;
 `;
 
-export default class extends React.Component {
-  state = {
-    value: 0
-  };
-  handleChange = event => {
-    const input = event.target.value;
-    const value = input > -1 ? input : 0;
-    this.setState({ value });
-  };
+export default class extends React.PureComponent {
   render() {
     return (
       <InputContainer>
-        <label htmlFor={`input_${this.props.id}`}>{this.props.id}</label>
+        <label htmlFor={this.props.id}>{this.props.id}</label>
         <Input
-          id={`input_${this.props.id}`}
-          value={this.state.value}
-          onChange={this.handleChange}
+          id={this.props.id}
+          value={this.props.value}
+          onChange={this.props.handleChange}
           type="number"
           minLength={1}
           maxLength={1000}
