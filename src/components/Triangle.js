@@ -1,7 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const TriangleContainer = styled.div``;
+const TriangleContainer = styled.div`
+  background: #fff;
+  border: 1px solid #ddd;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 /**
  * Equilateral Triangle
