@@ -34,18 +34,18 @@ class App extends Component {
   };
   componentDidMount() {
     const { sides } = this.state;
-    const borders = sidesToBorders(...Object.values(sides));
+    const borders = sidesToBorders(sides);
     this.changeType(sides);
     this.setState({ borders });
   }
   changeSide = side => {
     const newSides = { ...this.state.sides, ...side };
-    const borders = sidesToBorders(...Object.values(newSides));
+    const borders = sidesToBorders(newSides);
     this.changeType(newSides);
     this.setState({ sides: newSides, borders });
   };
   changeType = sides => {
-    const type = compareSides(...Object.values(sides));
+    const type = compareSides(sides);
     this.setState({ type });
   };
   render() {

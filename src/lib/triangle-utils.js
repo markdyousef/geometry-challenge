@@ -14,7 +14,7 @@ const validate = (a, b, c) => {
   }
 };
 
-export const compareSides = (a = 1, b = 2, c = 3) => {
+export const compareSides = ({ a = 1, b = 2, c = 3 }) => {
   validate(a, b, c);
   // all sides are equal length - equilateral triangle
   if (a === b && a === c) {
@@ -30,7 +30,7 @@ export const compareSides = (a = 1, b = 2, c = 3) => {
   return types.ISOSCELES;
 };
 
-export const bordersToSides = (left, height, right) => {
+export const bordersToSides = ({ left, height, right }) => {
   // Pythagoras to calculate a & c
   const a = Math.sqrt(Math.pow(left, 2) + Math.pow(height, 2));
   const c = Math.sqrt(Math.pow(height, 2) + Math.pow(right, 2));
@@ -38,7 +38,7 @@ export const bordersToSides = (left, height, right) => {
 
   return { a, b, c };
 };
-export const sidesToBorders = (a = 1, b = 2, c = 3) => {
+export const sidesToBorders = ({ a = 1, b = 2, c = 3 }) => {
   // Heron's formula to calc area of triangle
   const p = (a + b + c) / 2;
   const area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
@@ -49,8 +49,8 @@ export const sidesToBorders = (a = 1, b = 2, c = 3) => {
   const right = Math.sqrt(Math.pow(c, 2) - Math.pow(height, 2));
 
   return {
-    left: Math.round(left),
-    right: Math.round(right),
-    height: Math.round(height)
+    left: isNaN(left) ? 0 : Math.round(left),
+    right: isNaN(right) ? 0 : Math.round(right),
+    height: isNaN(height) ? 0 : Math.round(height)
   };
 };
