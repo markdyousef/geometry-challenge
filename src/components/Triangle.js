@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import types from "../constants/triangle-types";
 
 const MAX_WIDTH = 700;
 const MAX_HEIGHT = 400;
-const TITLE_HEIGHT = 80;
+const PAD_HEIGHT = 150;
 const SCALE = 100;
+
+const COLORS = [
+  { type: types.EQUILATERAL, color: "#324D5C" },
+  { type: types.ISOSCELES, color: "#F0CA4D" },
+  { type: types.SCALENE, color: "#ED3752" }
+];
 
 const Box = styled.div`
   background: #fff;
@@ -22,8 +29,8 @@ const TriangleContainer = styled.div`
 `;
 
 const Title = styled.h2`
-  height: ${TITLE_HEIGHT};
   font-weight: 200;
+  text-transform: lowercase;
 `;
 
 const Label = styled.span`
@@ -40,10 +47,12 @@ const Triangle = styled.div`
       props.left * SCALE,
       MAX_WIDTH / 2
     )}px solid transparent;
+
     border-bottom: ${Math.min(
       props.height * SCALE,
-      MAX_HEIGHT - TITLE_HEIGHT
-    )}px solid #000;
+      MAX_HEIGHT - PAD_HEIGHT
+    )}px solid ${props.color};
+
     border-right: ${Math.min(
       props.right * SCALE,
       MAX_WIDTH / 2
@@ -92,18 +101,20 @@ export default class extends React.PureComponent {
     return [aLabel, bLabel, cLabel];
   };
   renderTriangle = withLabels => {
-    const { type, sides, borders } = this.props;
+    const { type, borders } = this.props;
     // only display if all sides has a length > 0
     const valid =
       Object.values(borders).filter(border => border > 0).length === 3;
     if (valid) {
       const labels = withLabels ? this.renderLabels() : null;
-      return (
-        <TriangleContainer>
+      const color = COLORS.find(d => d.type === type).color;
+      return [
+        <Title key="triangle_title">{type}</Title>,
+        <TriangleContainer key="triangle_container">
           {labels}
-          <Triangle {...borders} />
+          <Triangle {...borders} color={color} />
         </TriangleContainer>
-      );
+      ];
     }
     return (
       <NoTriangle>
