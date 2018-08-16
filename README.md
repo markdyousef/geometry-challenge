@@ -36,6 +36,8 @@ I choose to frame the assignment, more as a real-world problem – a moving targ
 
 - [ ] move visualizations to canvas, to easily extend shapes
 
+- [ ] add TypeScript / Flow and do more rigoures testing of React components
+
 ## Usage
 
 ### Installation

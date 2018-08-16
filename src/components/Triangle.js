@@ -28,27 +28,22 @@ const Box = styled.div`
 const TriangleContainer = styled.div`
   position: relative;
 `;
-
 const Title = styled.h2`
   font-weight: 200;
   text-transform: lowercase;
 `;
-
 const NoTriangle = styled.div``;
-
-// TODO: fix scale values
 const Triangle = styled.div`
   width: 0;
   height: 0;
   ${props => `
     border-left: ${props.left * SCALE}px solid transparent;
-
     border-bottom: ${props.height * SCALE}px solid ${props.color};
-
     border-right: ${props.right * SCALE}px solid transparent;
   `};
 `;
 
+// helper function to scale sides to fit inside box
 const scale = sides => {
   const total = Object.values(sides).reduce((acc, curr) => acc + curr);
   const scaledSides = {
@@ -101,6 +96,7 @@ export default class extends React.PureComponent {
   renderTriangle = () => {
     const { type, sides, withLabels } = this.props;
     const borders = scale(sides);
+
     if (type) {
       const labels = withLabels ? this.createLabels(borders) : null;
       const color = COLORS.find(d => d.type === type).color;
