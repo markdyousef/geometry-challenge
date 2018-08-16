@@ -1,0 +1,398 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Triangle 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PureComponent
+    sides={
+        Object {
+            "a": 1,
+            "b": 1,
+            "c": 1,
+          }
+    }
+    type="EQUILATERAL"
+    withLabels={true}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.h2>
+          EQUILATERAL
+</styled.h2>,
+        <styled.div>
+          <PureComponent
+                    name="a"
+                    style={
+                              Object {
+                                        "left": "58px",
+                                        "position": "absolute",
+                                        "top": "116px",
+                                      }
+                    }
+          />
+          <PureComponent
+                    name="b"
+                    style={
+                              Object {
+                                        "bottom": "-15px",
+                                        "left": "126px",
+                                        "position": "absolute",
+                                      }
+                    }
+          />
+          <PureComponent
+                    name="c"
+                    style={
+                              Object {
+                                        "position": "absolute",
+                                        "right": "58px",
+                                        "top": "116px",
+                                      }
+                    }
+          />
+          <styled.div
+                    color="#324D5C"
+                    height={29}
+                    left={17}
+                    right={17}
+          />
+</styled.div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "EQUILATERAL",
+        },
+        "ref": null,
+        "rendered": "EQUILATERAL",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            Array [
+              <PureComponent
+                name="a"
+                style={
+                                Object {
+                                                "left": "58px",
+                                                "position": "absolute",
+                                                "top": "116px",
+                                              }
+                }
+/>,
+              <PureComponent
+                name="b"
+                style={
+                                Object {
+                                                "bottom": "-15px",
+                                                "left": "126px",
+                                                "position": "absolute",
+                                              }
+                }
+/>,
+              <PureComponent
+                name="c"
+                style={
+                                Object {
+                                                "position": "absolute",
+                                                "right": "58px",
+                                                "top": "116px",
+                                              }
+                }
+/>,
+            ],
+            <styled.div
+              color="#324D5C"
+              height={29}
+              left={17}
+              right={17}
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "a_label",
+            "nodeType": "class",
+            "props": Object {
+              "name": "a",
+              "style": Object {
+                "left": "58px",
+                "position": "absolute",
+                "top": "116px",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "b_label",
+            "nodeType": "class",
+            "props": Object {
+              "name": "b",
+              "style": Object {
+                "bottom": "-15px",
+                "left": "126px",
+                "position": "absolute",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "c_label",
+            "nodeType": "class",
+            "props": Object {
+              "name": "c",
+              "style": Object {
+                "position": "absolute",
+                "right": "58px",
+                "top": "116px",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "color": "#324D5C",
+              "height": 29,
+              "left": 17,
+              "right": 17,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.h2>
+            EQUILATERAL
+</styled.h2>,
+          <styled.div>
+            <PureComponent
+                        name="a"
+                        style={
+                                    Object {
+                                                "left": "58px",
+                                                "position": "absolute",
+                                                "top": "116px",
+                                              }
+                        }
+            />
+            <PureComponent
+                        name="b"
+                        style={
+                                    Object {
+                                                "bottom": "-15px",
+                                                "left": "126px",
+                                                "position": "absolute",
+                                              }
+                        }
+            />
+            <PureComponent
+                        name="c"
+                        style={
+                                    Object {
+                                                "position": "absolute",
+                                                "right": "58px",
+                                                "top": "116px",
+                                              }
+                        }
+            />
+            <styled.div
+                        color="#324D5C"
+                        height={29}
+                        left={17}
+                        right={17}
+            />
+</styled.div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "EQUILATERAL",
+          },
+          "ref": null,
+          "rendered": "EQUILATERAL",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              Array [
+                <PureComponent
+                  name="a"
+                  style={
+                                    Object {
+                                                      "left": "58px",
+                                                      "position": "absolute",
+                                                      "top": "116px",
+                                                    }
+                  }
+/>,
+                <PureComponent
+                  name="b"
+                  style={
+                                    Object {
+                                                      "bottom": "-15px",
+                                                      "left": "126px",
+                                                      "position": "absolute",
+                                                    }
+                  }
+/>,
+                <PureComponent
+                  name="c"
+                  style={
+                                    Object {
+                                                      "position": "absolute",
+                                                      "right": "58px",
+                                                      "top": "116px",
+                                                    }
+                  }
+/>,
+              ],
+              <styled.div
+                color="#324D5C"
+                height={29}
+                left={17}
+                right={17}
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "a_label",
+              "nodeType": "class",
+              "props": Object {
+                "name": "a",
+                "style": Object {
+                  "left": "58px",
+                  "position": "absolute",
+                  "top": "116px",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "b_label",
+              "nodeType": "class",
+              "props": Object {
+                "name": "b",
+                "style": Object {
+                  "bottom": "-15px",
+                  "left": "126px",
+                  "position": "absolute",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "c_label",
+              "nodeType": "class",
+              "props": Object {
+                "name": "c",
+                "style": Object {
+                  "position": "absolute",
+                  "right": "58px",
+                  "top": "116px",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#324D5C",
+                "height": 29,
+                "left": 17,
+                "right": 17,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;
