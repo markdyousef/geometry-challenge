@@ -18,6 +18,15 @@ const Container = styled.section`
   align-items: center;
 `;
 
+const Error = styled.div`
+  background: #ed3752;
+  padding: 10px 30px;
+  border: 2px solid #ed3752;
+  color: #fff;
+  font-weight: 200;
+  border-radius: 0.5em;
+`;
+
 class App extends Component {
   state = {
     sides: {
@@ -27,7 +36,8 @@ class App extends Component {
     },
     type: null,
     color: null,
-    borders: {}
+    borders: {},
+    error: null
   };
   componentDidMount() {
     const { sides } = this.state;
@@ -44,14 +54,19 @@ class App extends Component {
     this.setState({ sides: newSides, borders });
   };
   changeType = sides => {
-    const type = compareSides(sides);
-    this.setState({ type });
+    try {
+      const type = compareSides(sides);
+      this.setState({ type, error: null });
+    } catch (error) {
+      this.setState({ error: error.message, type: null });
+    }
   };
   render() {
     return (
       <Container>
         <Triangle {...this.state} />
         <Controls sides={this.state.sides} changeSide={this.changeSide} />
+        {this.state.error && <Error>{this.state.error}</Error>}
       </Container>
     );
   }

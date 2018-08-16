@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Label from "./Label";
 
 const InputContainer = styled.div`
   display: flex;
@@ -16,13 +17,14 @@ const Input = styled.input`
   font-size: 15px;
   outline: none;
   text-align: center;
+  margin: 5px;
 `;
 
 export default class extends React.PureComponent {
   render() {
     return (
       <InputContainer>
-        <label htmlFor={this.props.id}>{this.props.id}</label>
+        <Label name={this.props.id} />
         <Input
           id={this.props.id}
           value={this.props.value}

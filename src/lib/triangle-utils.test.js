@@ -12,13 +12,13 @@ describe("compareSides - Unit Tests", () => {
     it("should return isosceles", () => {
       const type = types.ISOSCELES;
       expect(compareSides({ a: 4, b: 4, c: 3 })).toBe(type);
-      expect(compareSides({ a: 1000, b: 2000, c: 1000 })).toBe(type);
+      expect(compareSides({ a: 400, b: 400, c: 300 })).toBe(type);
       expect(compareSides({ a: 0.00005, b: 0.00001, c: 0.00005 })).toBe(type);
     });
     it("should return scalene", () => {
       const type = types.SCALENE;
-      expect(compareSides({ a: 1, b: 2, c: 3 })).toBe(type);
-      expect(compareSides({ a: 1000, b: 2000, c: 3000 })).toBe(type);
+      expect(compareSides({ a: 3, b: 5, c: 4 })).toBe(type);
+      expect(compareSides({ a: 3000, b: 5000, c: 4000 })).toBe(type);
       expect(compareSides({ a: 1.9999, b: 2.8888, c: 3 })).toBe(type);
     });
   });

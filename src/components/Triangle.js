@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import types from "../constants/triangle-types";
+import Label from "./Label";
 
 const MAX_WIDTH = 700;
 const MAX_HEIGHT = 400;
@@ -9,8 +10,8 @@ const SCALE = 100;
 
 const COLORS = [
   { type: types.EQUILATERAL, color: "#324D5C" },
-  { type: types.ISOSCELES, color: "#F0CA4D" },
-  { type: types.SCALENE, color: "#ED3752" }
+  { type: types.ISOSCELES, color: "#9DC1DA" },
+  { type: types.SCALENE, color: "#56A690" }
 ];
 
 const Box = styled.div`
@@ -33,9 +34,6 @@ const Title = styled.h2`
   text-transform: lowercase;
 `;
 
-const Label = styled.span`
-  position: absolute;
-`;
 const NoTriangle = styled.div``;
 
 // TODO: fix scale values
@@ -61,42 +59,42 @@ const Triangle = styled.div`
 `;
 
 export default class extends React.PureComponent {
-  renderLabels = () => {
-    const { borders } = this.props;
+  createLabels = () => {
+    const { borders, sides } = this.props;
     const aLabel = (
       <Label
+        name="a"
         style={{
           left: `${(borders.left * SCALE) / 3}px`,
-          top: `${(borders.height * SCALE) / 3}px`
+          top: `${(borders.height * SCALE) / 4}px`,
+          position: "absolute"
         }}
         key="a_label"
-      >
-        a
-      </Label>
+      />
     );
 
     const cLabel = (
       <Label
+        name="c"
         style={{
           right: `${(borders.right * SCALE) / 3}px`,
-          top: `${(borders.height * SCALE) / 3}px`
+          top: `${(borders.height * SCALE) / 4}px`,
+          position: "absolute"
         }}
         key="c_label"
-      >
-        c
-      </Label>
+      />
     );
 
     const bLabel = (
       <Label
+        name="b"
         style={{
           bottom: "-25px",
-          left: `${((borders.right + borders.left) * SCALE) / 2}px`
+          left: `${((borders.right + borders.left) * SCALE) / 2}px`,
+          position: "absolute"
         }}
         key="b_label"
-      >
-        b
-      </Label>
+      />
     );
     return [aLabel, bLabel, cLabel];
   };
@@ -106,23 +104,27 @@ export default class extends React.PureComponent {
     const valid =
       Object.values(borders).filter(border => border > 0).length === 3;
     if (valid) {
-      const labels = withLabels ? this.renderLabels() : null;
+      const labels = withLabels ? this.createLabels() : null;
       const color = COLORS.find(d => d.type === type).color;
-      return [
-        <Title key="triangle_title">{type}</Title>,
-        <TriangleContainer key="triangle_container">
+      return (
+        <TriangleContainer>
           {labels}
           <Triangle {...borders} color={color} />
         </TriangleContainer>
-      ];
+      );
     }
     return (
       <NoTriangle>
-        <h5>Invalid triangle...</h5>
+        <h5>Can't draw this shape...</h5>
       </NoTriangle>
     );
   };
   render() {
-    return <Box>{this.renderTriangle(true)}</Box>;
+    return (
+      <Box>
+        <Title>{this.props.type}</Title>
+        {this.renderTriangle(true)}
+      </Box>
+    );
   }
 }
